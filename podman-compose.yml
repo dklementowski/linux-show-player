@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  app:
+    build: ./podman
+    volumes:
+      - ./:/app
+      - /run/user/1000/pipewire-0:/tmp/pipewire-0
+      - ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:/tmp/${WAYLAND_DISPLAY}
+      - ~/.cache/pip:/root/.cache/pip
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/snd/seq:/dev/snd/seq
+      - ~/.config/LinuxShowPlayer:/root/.config/LinuxShowPlayer
+      - ~/.local/share/LinuxShowPlayer:/root/.local/LinuxShowPlayer
+      - ~/LinuxShowPlayer:/root/LinuxShowPlayer
+    environment:
+      XDG_RUNTIME_DIR: /tmp
+      PIPEWIRE_RUNTIME_DIR: /tmp
+      WAYLAND_DISPLAY: ${WAYLAND_DISPLAY}
+      QT_QPA_PLATFORM: wayland
+    workdir: /app
+    entrypoint: tail -f /dev/null

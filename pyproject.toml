@@ -37,6 +37,7 @@ humanize = "^4.4.0"
 pyalsa = { git = "https://github.com/alsa-project/alsa-python.git", tag = "v1.2.7" }
 # Use a pyliblo fork that define dependecies correctly
 pyliblo3 = "0.13.0"
+ola = "0.10.7"
 
 [tool.poetry.group.docs]
 optional = true
